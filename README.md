@@ -63,6 +63,18 @@ Example product:
 
 ---
 
+### 📥 Clone Repository
+
+```bash
+# Clone the project
+git clone https://github.com/akhileshasapu/Simple-Shopping-Cart.git
+
+# Go inside project root
+cd Simple-Shopping-Cart
+```
+
+---
+
 ### 🖥️ Backend Setup
 
 ```bash
@@ -138,4 +150,4 @@ This project is made for the **ASE Challenge** to demonstrate:
 * 🌍 Visakhapatnam, India
 * 🎓 Fresher
 * 🔗 GitHub: [Simple Shopping Cart Repo](https://github.com/akhileshasapu/Simple-Shopping-Cart)
-* -portifolio : https://akhileshasapuportfolio.vercel.app/
+* 🌐 Portfolio: [akhileshasapuportfolio.vercel.app](https://akhileshasapuportfolio.vercel.app)
