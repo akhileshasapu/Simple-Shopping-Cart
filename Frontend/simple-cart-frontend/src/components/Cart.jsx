@@ -54,48 +54,52 @@ const Cart = () => {
           </div>
         ) : (
           <>
-            {cartItems.map(item => (
-              <div
-                key={item.id}
-                className="flex justify-between items-center mb-4 p-3 border-b border-gray-200 hover:bg-purple-50 rounded-lg transition-colors"
-              >
-                <div className="flex items-center gap-3">
-                  <img src={item.imageUrl} alt={item.name} className="w-16 h-16 object-cover rounded" />
-                  <div className="flex flex-col">
-                    <p className="font-semibold text-gray-800">{item.name}</p>
-                    <p className="text-gray-600 text-sm">₹{item.price} each</p>
+            {/* ✅ Scrollable cart items list */}
+            <div className="max-h-80 overflow-y-auto pr-2">
+              {cartItems.map(item => (
+                <div
+                  key={item.id}
+                  className="flex justify-between items-center mb-4 p-3 border-b border-gray-200 hover:bg-purple-50 rounded-lg transition-colors"
+                >
+                  <div className="flex items-center gap-3">
+                    <img src={item.imageUrl} alt={item.name} className="w-16 h-16 object-cover rounded" />
+                    <div className="flex flex-col">
+                      <p className="font-semibold text-gray-800">{item.name}</p>
+                      <p className="text-gray-600 text-sm">₹{item.price} each</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => handleDecrement(item.id)}
+                      className="bg-gray-200 px-2 rounded hover:bg-gray-300 transition"
+                      aria-label={`Decrease quantity of ${item.name}`}
+                    >
+                      -
+                    </button>
+                    <span className="px-2 font-semibold transition-transform duration-300 ease-out transform scale-100">
+                      {item.quantity}
+                    </span>
+                    <button
+                      onClick={() => handleIncrement(item.id)}
+                      className="bg-gray-200 px-2 rounded hover:bg-gray-300 transition"
+                      aria-label={`Increase quantity of ${item.name}`}
+                    >
+                      +
+                    </button>
+                    <button
+                      onClick={() => removeFromCart(item.id)}
+                      className="text-red-500 hover:text-red-700 font-semibold ml-2"
+                      aria-label={`Remove ${item.name} from cart`}
+                    >
+                      ✕
+                    </button>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => handleDecrement(item.id)}
-                    className="bg-gray-200 px-2 rounded hover:bg-gray-300 transition"
-                    aria-label={`Decrease quantity of ${item.name}`}
-                  >
-                    -
-                  </button>
-                  <span className="px-2 font-semibold transition-transform duration-300 ease-out transform scale-100">
-                    {item.quantity}
-                  </span>
-                  <button
-                    onClick={() => handleIncrement(item.id)}
-                    className="bg-gray-200 px-2 rounded hover:bg-gray-300 transition"
-                    aria-label={`Increase quantity of ${item.name}`}
-                  >
-                    +
-                  </button>
-                  <button
-                    onClick={() => removeFromCart(item.id)}
-                    className="text-red-500 hover:text-red-700 font-semibold ml-2"
-                    aria-label={`Remove ${item.name} from cart`}
-                  >
-                    ✕
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
 
-            <div className="mt-6 flex flex-col gap-3">
+            {/* ✅ Sticky total + actions */}
+            <div className="mt-6 flex flex-col gap-3  bottom-0 bg-white bg-opacity-90 pt-4">
               <h3 className="text-lg font-bold text-gray-800 text-right">Total: ₹{total}</h3>
               <div className="flex gap-4 justify-end">
                 <button
