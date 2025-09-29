@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import api from "../api/api";
 import ProductCard from "../components/ProductCard";
+import { fetchProducts } from "../api/productApi";
 
 import { CartContext } from "../context/CartContext";
 
@@ -10,11 +11,12 @@ const Home = () => {
 
   const { addToCart } = useContext(CartContext);
 
-  useEffect(() => {
-    api.get("/products")
-      .then(res => setProducts(res.data))
-      .catch(err => console.error(err));
-  }, []);
+useEffect(() => {
+  fetchProducts()
+    .then(setProducts)
+    .catch(err => console.error(err));
+}, []);
+
 
   return (
     <div className="container mx-auto p-6">
