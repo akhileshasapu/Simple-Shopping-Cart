@@ -10,7 +10,7 @@ const ProductCard = ({ product }) => {
       <img
         src={product.imageUrl}
         alt={product.name}
-        className="w-36 h-36 object-fit mb-4 rounded"
+        className="w-36 h-36 object-contain mb-4 rounded"
       />
       <h3 className="text-lg font-semibold mb-2 text-center">{product.name}</h3>
       <p className="text-gray-700 font-medium mb-4">₹{product.price}</p>
