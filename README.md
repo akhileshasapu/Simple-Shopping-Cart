@@ -1,181 +1,141 @@
-# Simple Shopping Cart 🛒
+# 🛒 Simple Shopping Cart
 
-A minimal **e-commerce site** to list products and manage a shopping cart.
-This project demonstrates fullstack development with a **Java Spring Boot backend** and a **React.js frontend**.
+A minimal **fullstack e-commerce site** with:
 
----
+* **Backend:** Java Spring Boot
+* **Frontend:** React.js + Tailwind CSS
 
-## Project Goal
-
-Build a simple shopping cart system where users can:
-
-* Browse a list of products.
-* Add products to a cart.
-* Manage quantities.
-* Checkout and send cart data to the backend.
+This project shows how to build a basic cart system where users can browse products, add them to a cart, manage quantities, and checkout.
 
 ---
 
-## Core Features
+## 🎯 Project Goal
 
-### Backend
+Build a simple shopping cart where users can:
 
-* **GET /products**
-  Returns a hardcoded JSON list of products (id, name, price, imageUrl).
-  Example product JSON:
-
-  ```json
-  {
-    "id": 1,
-    "name": "Product 1",
-    "price": 499,
-    "imageUrl": "https://example.com/product1.jpg"
-  }
-  ```
-
-* **POST /checkout**
-  Accepts a list of product IDs and quantities, logs the order to the console, and returns a success message.
-  Example request body:
-
-  ```json
-  [
-    { "id": 1, "quantity": 2 },
-    { "id": 3, "quantity": 1 }
-  ]
-  ```
-
-> No database is required for this simple version; data is hardcoded.
+* View a list of products.
+* Add products to cart.
+* Update quantities or remove items.
+* Checkout → send data to backend.
 
 ---
 
-### Frontend
+## ⚡ Core Features
 
-* Fetches and displays products in a grid layout.
-* "Add to Cart" button for each product.
-* Cart state is managed on the client-side using **React Context API**.
-* Cart view (modal or separate page) showing:
+### Backend (Spring Boot)
 
-  * Items
-  * Quantities
-  * Total price
-* "Checkout" button sends cart data to the backend.
+* **GET /api/products** → Returns a hardcoded list of products (id, name, price, imageUrl).
+* **POST /api/checkout** → Accepts cart JSON (`productId → quantity`), logs order, and returns success message.
+* Data is hardcoded → no DB required.
 
----
+Example product:
 
-### Bonus Features ✨
-
-* Users can change item quantities in the cart.
-* Persist cart in `localStorage` to survive page refresh.
-* Backend test cases for `/products` endpoint (JUnit).
-
----
-
-## Getting Started
-
-### Prerequisites
-
-* **Java 17+**
-* **Maven**
-* **Node.js 18+**
-* **Git**
+```json
+{
+  "id": 1,
+  "name": "Laptop",
+  "price": 55000,
+  "imageUrl": "https://example.com/laptop.jpg"
+}
+```
 
 ---
 
-### Backend Setup
+### Frontend (React + Vite + Tailwind)
 
-1. Navigate to backend folder:
-
-   ```bash
-   cd Backend/ecommerce
-   ```
-
-2. Build the project:
-
-   ```bash
-   mvn clean install
-   ```
-
-3. Run the backend server:
-
-   ```bash
-   mvn spring-boot:run
-   ```
-
-4. Backend will be available at:
-
-   ```
-   http://localhost:8080
-   ```
+* Fetches products from backend and shows in a grid.
+* Each product has "Add to Cart".
+* Cart state managed with **React Context API**.
+* Cart page/modal shows: items, quantities, total price.
+* "Checkout" sends cart data to backend.
+* Bonus: Cart persists in `localStorage` after refresh.
 
 ---
 
-### Frontend Setup
+## 🚀 Getting Started
 
-1. Navigate to frontend folder:
+### 🔧 Prerequisites
 
-   ```bash
-   cd Frontend/simple-cart-frontend
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Start the frontend development server:
-
-   ```bash
-   npm run dev
-   ```
-
-4. Open browser at:
-
-   ```
-   http://localhost:5173
-   ```
-
-> Make sure the backend is running to fetch product data.
+* Java 17+
+* Maven
+* Node.js 18+
+* Git
 
 ---
 
-## Running Test Cases
+### 🖥️ Backend Setup
 
-**Backend JUnit Tests:**
+```bash
+# Go to backend folder
+cd Backend/ecommerce
+
+# Build the project
+mvn clean install
+
+# Run the backend server
+mvn spring-boot:run
+```
+
+Backend runs at 👉 [http://localhost:8080](http://localhost:8080)
+
+---
+
+### 🌐 Frontend Setup
+
+```bash
+# Go to frontend folder
+cd Frontend/simple-cart-frontend
+
+# Install dependencies
+npm install
+
+# Start frontend dev server
+npm run dev
+```
+
+Frontend runs at 👉 [http://localhost:5173](http://localhost:5173)
+
+⚠️ Make sure backend is running first, otherwise products won’t load.
+
+---
+
+## 🧪 Running Tests (Backend Only)
 
 ```bash
 cd Backend/ecommerce
 mvn test
 ```
 
-> Test example: `/products` endpoint should return 5-10 hardcoded products.
+> Example test: `/api/products` should return 5–20 hardcoded products.
 
 ---
 
-## Design Choices & Assumptions
+## 💡 Design Choices
 
-* **Backend:** Hardcoded JSON to simplify initial setup; DTOs used for request/response clarity.
-* **Frontend:** React Context API for global cart state management.
-* **UI/UX:** Tailwind CSS for responsive, clean design.
-* **Cart Data:** Optionally persisted in `localStorage`.
+* **Backend:** Hardcoded JSON for simplicity. DTOs used for clarity.
+* **Cart Format:** `Map<Long, Integer>` (productId → quantity).
+* **Frontend:** Context API for global cart state.
+* **UI:** Tailwind CSS for responsive design.
+* **Cart Persistence:** Saved in `localStorage`.
 
 ---
 
-## Submission
+## 📌 Submission Notes
 
-This project is submitted for the **ASE Challenge** to demonstrate:
+This project is made for the **ASE Challenge** to demonstrate:
 
-* Separation of frontend and backend.
+* Clear frontend + backend separation.
 * API integration.
-* Effective state management.
-* Core shopping cart functionality.
+* State management in React.
+* Basic shopping cart functionality.
 
 ---
 
-## Author
+## 👨‍💻 Author
 
 **Satya Akhilesh Asapu**
 
-* GitHub: [https://github.com/akhileshasapu/Simple-Shopping-Cart](https://github.com/akhileshasapu/Simple-Shopping-Cart)
-* Location: Visakhapatnam, India
-* Role: Associate Software Engineer (ASE)
+* 🌍 Visakhapatnam, India
+* 🎓 Fresher
+* 🔗 GitHub: [Simple Shopping Cart Repo](https://github.com/akhileshasapu/Simple-Shopping-Cart)
+* -portifolio : https://akhileshasapuportfolio.vercel.app/
