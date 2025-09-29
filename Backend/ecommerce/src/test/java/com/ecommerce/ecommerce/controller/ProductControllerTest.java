@@ -1,6 +1,6 @@
 package com.ecommerce.ecommerce.controller;
 
-import com.ecommerce.ecommerce.model.Product;
+import com.ecommerce.ecommerce.Dto.ProductDto;
 import com.ecommerce.ecommerce.service.ProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +43,8 @@ public class ProductControllerTest {
     // Non-empty product list
     @Test
     public void testGetProducts_nonEmpty() throws Exception {
-        Product product1 = new Product(1L, "Test Product 1", 100.0, "image1.png");
-        Product product2 = new Product(2L, "Test Product 2", 200.0, "image2.png");
+        ProductDto product1 = new ProductDto(1L, "Test Product 1", 100.0, "image1.png");
+        ProductDto product2 = new ProductDto(2L, "Test Product 2", 200.0, "image2.png");
 
         when(productService.getAllProducts()).thenReturn(Arrays.asList(product1, product2));
 
